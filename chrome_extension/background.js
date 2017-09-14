@@ -21,7 +21,7 @@ function doRequest() {
     //xhr.open("GET", "http://iot.tabucchi.it/sos_wc_status.php?debug=1", true);
     xhr.open("GET", "http://iot.tabucchi.it/sos_wc_status.php", true);
     xhr.onreadystatechange = function(){
-        if( xhr.readyState == 4){
+        if( xhr.readyState === 4){
 
 
             if(xhr.status !== 200) {
@@ -45,7 +45,7 @@ function doRequest() {
                     status_text = "libero - sciaquone vuoto";
                     break;
                 case "occupied":
-                    icon = 'images/status_red.png'
+                    icon = 'images/status_red.png';
                     status_text = "occupato";
                     break;
                 default:
@@ -63,4 +63,19 @@ function doRequest() {
 
 chrome.runtime.onMessage.addListener(function(message,sender,sendResponse){
     chrome.runtime.sendMessage({msg: status_text},function(response){});
+});
+
+//Right Menu
+chrome.runtime.onInstalled.addListener(function() {
+    chrome.contextMenus.create({
+        title: "Refresh",
+        id: "refresh",
+        contexts:["all"]
+    });
+});
+
+chrome.contextMenus.onClicked.addListener(function(info, tab) {
+    if (info.menuItemId === "refresh") {
+       doRequest();
+    }
 });
