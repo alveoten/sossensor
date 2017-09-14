@@ -5,7 +5,7 @@ setInterval(function() {
         if( xhr.readyState == 4){
 
             if(xhr.status !== 200) {
-                chrome.browserAction.setIcon({path: "status_red.png"});
+                chrome.browserAction.setIcon({path: "images/status_red.png"});
                 console.log("not valid response");
                 return;
             }
@@ -14,13 +14,13 @@ setInterval(function() {
 
             switch(result.status){
                 case "free":
-                    icon = 'status_green.png';
+                    icon = 'images/status_green.png';
                     break;
                 case "warning":
-                    icon = 'status_yellow.png';
+                    icon = 'images/status_yellow.png';
                     break;
                 case "occupied":
-                    icon = 'status_red.png'
+                    icon = 'images/status_red.png'
                     break;
                 default:
                     console.log("assert!");
