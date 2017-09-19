@@ -7,7 +7,7 @@ error_reporting(E_ALL | E_STRICT);
 chdir(realpath(__DIR__ . "/../"));
 
 require_once "config.php";
-require_once "vendor/autoload.php";
+require_once _ROOT_PATH."/vendor/autoload.php";
 
 $mongo = new MongoDB\Client($mongoUri);
 
