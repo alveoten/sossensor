@@ -32,10 +32,20 @@ $avg_times = [];
 $labels = [];
 foreach ($res as $r) {
     $labels[] = $r->hour;
-    $data_times[] = $r->avg_use;
+    $data_times[] = round($r->avg_use,2);
     $avg_times[] = round($r->avg_time/60,2);
 }
 
+
+if(isset($_GET['json'])){
+    echo json_encode([
+        "labels" => $labels,
+        "data_times" => $data_times,
+        "avg_times" => $avg_times
+      ]
+    );
+    exit;
+}
 
 ?><!DOCTYPE html>
 <html>
