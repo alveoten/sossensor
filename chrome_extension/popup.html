@@ -3,9 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <title>Sos-WC</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/css/font-awesome-animation.min.css">
+    <script src="assets/js/jquery-3.2.1.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
 </head>
-<body style="width:300px">
-    <h1 style="margin: 10px auto; width: 100%; text-align: center;">Il bagno è <div style="display: inline-block" id="status">libero</div></h1>
-    <script type="text/javascript" src="popup.js"></script>
+<body style="width:300px;">
+<div class="nav-side-menu">
+    <div class="brand">SosWc</div>
+
+    <p style="margin: 10px auto; width: 100%; text-align: center;">Il bagno è <strong><span class="label label-success" id="status">libero</span></strong></p>
+
+    <hr>
+
+    <div class="menu-list">
+
+        <ul id="menu-content" class="menu-content out">
+            <li>
+                <a href="#" id="refresh">
+                    <i class="fa fa-refresh" aria-hidden="true"></i> Refresh
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <iframe id="chart" src="http://iot.tabucchi.it/sos_wc/server/chart.php"></iframe>
+</div>
+<script type="text/javascript" src="popup.js"></script>
 </body>
 </html>
