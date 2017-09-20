@@ -3,7 +3,7 @@
 
   "name": "SOS-WC",
   "description": "Stanco di aspettare? Libera il tuo colon con Sos-WC",
-  "version": "1.0.0",
+  "version": "1.1.0",
 
   "browser_action": {
     "default_icon": "images/status_green.png",
