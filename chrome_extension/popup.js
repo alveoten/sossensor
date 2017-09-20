@@ -5,7 +5,7 @@ chrome.runtime.sendMessage({data:"Handshake"},function(response){
 chrome.runtime.onMessage.addListener(
     function(request, sender, sendResponse) {
         var status = $("#status");
-        status.innerHTML = request.msg;
+        status.text(request.msg);
         status.removeClass(status.attr('class')).addClass("label " + request.className);
 
         $("#refresh").find("i").removeClass("faa-spin animated");

@@ -33,8 +33,6 @@ function doRequest() {
 
             result = JSON.parse(xhr.responseText);
 
-
-
             switch(result.status){
                 case "free":
                     icon = 'images/status_green.png';
@@ -55,23 +53,8 @@ function doRequest() {
                     console.log("assert!");
             }
 
-            var xhrChart = new XMLHttpRequest();
-            xhrChart.open("GET", "http://iot.tabucchi.it/sos_wc/server/chart.php", true);
-            xhrChart.onreadystatechange = function(){
-                if( xhrChart.readyState === 4){
-
-                    if(xhrChart.status !== 200) {
-                        console.log("not valid response");
-                        return;
-                    }
-
-                    resultChart = xhrChart.response; console.log(resultChart, xhrChart);
-
-                    chrome.runtime.sendMessage({msg: status_text, data: result.status, className: className, chart: resultChart});
-                    chrome.browserAction.setIcon({path: icon});
-                }
-            };
-            xhrChart.send();
+            chrome.runtime.sendMessage({msg: status_text, data: result.status, className: className});
+            chrome.browserAction.setIcon({path: icon});
         }
     };
 
@@ -80,5 +63,5 @@ function doRequest() {
 
 
 chrome.runtime.onMessage.addListener(function(message,sender,sendResponse){
-    chrome.runtime.sendMessage({msg: status_text, className: className, chart: 'test'},function(response){});
+    chrome.runtime.sendMessage({msg: status_text, className: className},function(response){});
 });
