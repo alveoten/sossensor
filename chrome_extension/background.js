@@ -41,7 +41,7 @@ function doRequest() {
                     break;
                 case "warning":
                     icon = 'images/status_yellow.png';
-                    status_text = "libero - sciaquone vuoto";
+                    status_text = "libero - sciacquone vuoto";
                     className = 'label-warning';
                     break;
                 case "occupied":
